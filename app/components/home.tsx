@@ -119,6 +119,18 @@ function Screen() {
   useEffect(() => {
     loadAsyncGoogleFont();
   }, []);
+  useEffect(() => {
+  const script = document.createElement("script");
+  script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7434057385255847";
+  script.async = true;
+  script.crossOrigin = "anonymous";
+  document.head.appendChild(script);
+
+  return () => {
+    // 在组件卸载时移除添加的脚本
+    document.head.removeChild(script);
+  };
+}, []);
 
   return (
     <div
